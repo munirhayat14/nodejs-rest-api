@@ -29,7 +29,19 @@ module.exports = {
                 post.total_number_of_comments = totalComments;
             });
 
+            // sort posts list ordered by their number of comments
             const sortedPosts = sortByKey(posts, 'total_number_of_comments');
+
+            // relabel and remove unneeded key
+            sortedPosts.forEach(function (post) { 
+                post.post_id = post.id;
+                delete post.id; 
+                post.post_title = post.title;
+                delete post.title; 
+                post.post_body = post.body;
+                delete post.body;
+                delete post.userId 
+            });
 
             return res.status(200).json(sortedPosts);
         } catch (error) {
