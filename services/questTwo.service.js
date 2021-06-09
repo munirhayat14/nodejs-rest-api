@@ -18,12 +18,10 @@ module.exports = {
                         isMatch = false;
                     }
                     isValid = isValid && isMatch;
-                    console.log('comment', comment[key]);
-                    console.log('filters',filters[key]);
                 }
                 return isValid;
             });
-            
+
             return res.status(200).json(filteredComments);
         } catch (error) {
             console.log(error);
